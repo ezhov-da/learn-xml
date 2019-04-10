@@ -8,7 +8,7 @@ import java.io.OutputStream;
 
 public class ContentGenerator {
     public static void main(String[] args) {
-        int countTemplate = 100000;
+        int countTemplate = 3;
         File fileTemplate = new File("src/main/resources/template-" + countTemplate + ".xml");
         try (OutputStream outputStream = new FileOutputStream(fileTemplate)) {
             XMLStreamWriter xsw = XMLOutputFactory.newInstance().createXMLStreamWriter(outputStream);

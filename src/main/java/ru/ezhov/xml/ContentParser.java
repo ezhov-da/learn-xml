@@ -10,6 +10,7 @@ import java.io.InputStream;
 public class ContentParser {
     public static void main(String[] args) {
         validate("/template.xsd", "/template-3.xml");
+        validate("/template.xsd", "/template-5.xml");
         validate("/template.xsd", "/template-10000.xml");
         validate("/template.xsd", "/template-100000.xml");
     }
