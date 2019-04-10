@@ -12,24 +12,23 @@ public class ContentGenerator {
         File fileTemplate = new File("src/main/resources/template-" + countTemplate + ".xml");
         try (OutputStream outputStream = new FileOutputStream(fileTemplate)) {
             XMLStreamWriter xsw = XMLOutputFactory.newInstance().createXMLStreamWriter(outputStream);
+            String nsUri = "https://ezhov-da.github.io/content";
             xsw.writeStartDocument("UTF-8", "1.0");
-            xsw.writeStartElement("ezh", "content", "https://ezhov-da.github.io/content");
-            xsw.setPrefix("ezh", "https://ezhov-da.github.io/content");
-            xsw.writeNamespace("ezh", "https://ezhov-da.github.io/content");
-            xsw.writeStartElement("ezh", "templates", "https://ezhov-da.github.io/content");
+            xsw.writeStartElement("ezh", "content", nsUri);
+            xsw.writeAttribute("xsd", "template.xsd");
+            xsw.setPrefix("ezh", nsUri);
+            xsw.writeNamespace("ezh", nsUri);
+            xsw.writeStartElement("ezh", "templates", nsUri);
             for (int i = 0; i < countTemplate; i++) {
-                xsw.writeStartElement("ezh", "template", "https://ezhov-da.github.io/content");
+                xsw.writeStartElement("ezh", "template", nsUri);
                 xsw.writeAttribute("id", "10");
-                xsw.writeStartElement("ezh", "rows", "https://ezhov-da.github.io/content");
-                xsw.writeStartElement("ezh", "row", "https://ezhov-da.github.io/content");
+                xsw.writeStartElement("ezh", "rows", nsUri);
+                xsw.writeEmptyElement("ezh", "row", nsUri);
                 xsw.writeAttribute("id", "10");
-                xsw.writeEndElement(); //row
-                xsw.writeStartElement("ezh", "row", "https://ezhov-da.github.io/content");
+                xsw.writeEmptyElement("ezh", "row", nsUri);
                 xsw.writeAttribute("id", "12");
-                xsw.writeEndElement(); //row
-                xsw.writeStartElement("ezh", "row", "https://ezhov-da.github.io/content");
+                xsw.writeEmptyElement("ezh", "row", nsUri);
                 xsw.writeAttribute("id", "123");
-                xsw.writeEndElement(); //row
                 xsw.writeEndElement(); //rows
                 xsw.writeEndElement(); //template
             }
